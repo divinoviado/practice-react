@@ -15,8 +15,10 @@ import { NavbarContainer,
 function Navbar () {
     const [extendNavbar, setExtendNavbar] = useState(false);
 
+    const closeMenu = () => setExtendNavbar(false);
+
     return (
-        <NavbarContainer extendNavbar={extendNavbar}>
+        <NavbarContainer extendNavbar={ extendNavbar }>
             <NavbarInnerContainer >
                 <LeftContainer>
                     <NavbarLinkContainer>
@@ -28,7 +30,7 @@ function Navbar () {
                         <OpenLinksButton onClick={() => {
                             setExtendNavbar((curr) => !curr);
                         }}>
-                        {extendNavbar ? <> &#10005; </> : <> &#8801; </>} </OpenLinksButton>
+                        { extendNavbar ? <> &#10005; </> : <> &#8801; </>} </OpenLinksButton>
                     </NavbarLinkContainer>
                 </LeftContainer>
                 <RightContainer>
@@ -37,11 +39,11 @@ function Navbar () {
             </NavbarInnerContainer>
             { extendNavbar && (
             <NavbarExtendedContainer>
-                <NavbarLinkExtended to="/">Home</NavbarLinkExtended>
-                <NavbarLinkExtended to="/about">About</NavbarLinkExtended>
-                <NavbarLinkExtended to="/services">Services</NavbarLinkExtended>
-                <NavbarLinkExtended to="/testimony">Testimony</NavbarLinkExtended>
-                <NavbarLinkExtended to="/contact">Contact Us</NavbarLinkExtended>
+                <NavbarLinkExtended onClick={ closeMenu } to="/">Home</NavbarLinkExtended>
+                <NavbarLinkExtended onClick={ closeMenu } to="/about">About</NavbarLinkExtended>
+                <NavbarLinkExtended onClick={ closeMenu } to="/services">Services</NavbarLinkExtended>
+                <NavbarLinkExtended onClick={ closeMenu } to="/testimony">Testimony</NavbarLinkExtended>
+                <NavbarLinkExtended onClick={ closeMenu } to="/contact">Contact Us</NavbarLinkExtended>
             </NavbarExtendedContainer>
             )}
         </NavbarContainer>
